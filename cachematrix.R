@@ -1,4 +1,4 @@
-# makeCacheMatrix encapsulates matix and offers an inverse function on its matrix
+# makeCacheMatrix encapsulates a matix and offers an inverse function on that matrix
 # The inverse function will cache the current inverse to save computation time
 
 # Trivial usage:
