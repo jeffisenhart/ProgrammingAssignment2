@@ -1,13 +1,5 @@
-# makeCacheMatrix encapsulates a matix and offers an inverse function on that matrix
-# The inverse function will cache the current inverse to save computation time
+# makeCacheMatrix encapsulates a matix and offers inverse set/get functions
 
-# Trivial usage:
-# o <- makeCacheMatrix(matrix(1:1,1))
-# o$get() # verify we got somthing
-# inv <- cacheSolve(o)
-# inv  #NOTE: when inv prints, you should NOT see the cache message appear
-# inv2 <- cacheSolve(o)
-# inv2  #NOTE: when inv2 prints, you should see the cache message "getting cached inverse..." appear
 
 makeCacheMatrix <- function( x = matrix() ){
       i <- NULL
@@ -23,6 +15,10 @@ makeCacheMatrix <- function( x = matrix() ){
       list( set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 
+# cacheSolve will return the inverse of the matrix encapsulated within x
+# If the inverse of the matrix was not previously computed, cacheSolve computes it and
+# stores it via x$setInverse method for fetching later via x$getInverse
+
 cacheSolve <- function ( x, ... ){
       i <- x$getInverse()
       if( !is.null(i) ){
@@ -34,3 +30,11 @@ cacheSolve <- function ( x, ... ){
       x$setInverse(i)
       i
 }
+
+# Trivial usage:
+# o <- makeCacheMatrix(matrix(1:1,1))
+# o$get() # verify we got somthing
+# inv <- cacheSolve(o)
+# inv  #NOTE: when inv prints, you should NOT see the cache message appear
+# inv2 <- cacheSolve(o)
+# inv2  #NOTE: when inv2 prints, you should see the cache message "getting cached inverse..." appear
