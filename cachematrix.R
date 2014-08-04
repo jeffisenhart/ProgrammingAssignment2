@@ -7,30 +7,30 @@
 # inv <- cacheSolve(o)
 # inv  #NOTE: when inv prints, you should NOT see the cache message appear
 # inv2 <- cacheSolve(o)
-# inv2  #NOTE: when inv2 prints, you should see the cache message appear
+# inv2  #NOTE: when inv2 prints, you should see the cache message "getting cached inverse..." appear
 
 makeCacheMatrix <- function( x = matrix() ){
-	i <- NULL
-	set <- function( y ){
-		x <<- y
-		i <<- NULL
-	}
-	get <- function() x
-	setInverse <- function(inverse){
-		i <<- inverse
-	}
-	getInverse <- function() i
-	list( set = set, get = get, setInverse = setInverse, getInverse = getInverse)
+      i <- NULL
+      set <- function( y ){
+            x <<- y
+            i <<- NULL
+      }
+      get <- function() x
+      setInverse <- function(inverse){
+            i <<- inverse
+      }
+      getInverse <- function() i
+      list( set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 
 cacheSolve <- function ( x, ... ){
-	i <- x$getInverse()
-	if( !is.null(i) ){
-		message("getting cached inverse...")
-		return(i)
-	}
-	data <- x$get()
-	i <- solve(data)
-	x$setInverse(i)
-	i
+      i <- x$getInverse()
+      if( !is.null(i) ){
+            message("getting cached inverse...")
+            return(i)
+      }
+      data <- x$get()
+      i <- solve(data)
+      x$setInverse(i)
+      i
 }
