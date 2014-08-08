@@ -1,4 +1,8 @@
+# makeCacheMatrix
+# Author: Jeff Isenhart
 # makeCacheMatrix encapsulates a matix and offers inverse set/get functions
+# As per assignment instructions, we can assume the matrix passed is one that
+# has an inverse
 
 
 makeCacheMatrix <- function( x = matrix() ){
@@ -15,6 +19,8 @@ makeCacheMatrix <- function( x = matrix() ){
       list( set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 
+# cacheSolve
+# Author: Jeff Isenhart
 # cacheSolve will return the inverse of the matrix encapsulated within x
 # If the inverse of the matrix was not previously computed, cacheSolve computes it and
 # stores it via x$setInverse method for fetching later via x$getInverse
